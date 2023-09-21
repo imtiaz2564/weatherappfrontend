@@ -1,5 +1,5 @@
 const getPostsData = async () => {
-  const res = await fetch("http://localhost:4000/weather");
+  const res = await fetch("http://104.248.101.152:4000/weather");
   return res.json();
 };
 

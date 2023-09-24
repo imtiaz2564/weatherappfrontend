@@ -1,8 +1,11 @@
 # Use the official Node.js image as the base image
-FROM node:15
+FROM node:18
 
 # Set the working directory inside the container
 WORKDIR /app
+
+# Install the latest version of npm globally
+RUN npm install -g npm@latest
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -17,4 +20,4 @@ COPY . .
 EXPOSE 3000
 
 # Command to start your application
-CMD [ "npm", "start" ]
+CMD ["yarn", "dev"]

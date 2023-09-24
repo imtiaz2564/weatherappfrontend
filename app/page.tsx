@@ -1,14 +1,18 @@
-const getPostsData = async () => {
-  const res = await fetch("http://104.248.101.152:4000/weather");
-  return res.json();
+const getData = async () => {
+  const url = 'http://104.248.101.152:4000/weather';
+  const randomQueryParam = `?timestamp=${Date.now()}`;
+  const result = await fetch(url + randomQueryParam);
+  return result.json();
 };
 
-export default async function posts() {
-  const posts = await getPostsData();
+export default async function post() {
+  const data = await getData();
+  console.log(data);
   return (
     <div>
+      <h3>Random Weather Information</h3>
       {
-        posts.map((post:any) => {
+        data.map((post:any) => {
           return <ul>
             <li>Temperature: {post.temperature}°C</li>
             <li>Condition: {post.condition}</li></ul>;
